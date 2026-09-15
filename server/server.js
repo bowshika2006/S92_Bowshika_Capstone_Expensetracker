@@ -7,6 +7,8 @@ const app = express();
 const PORT = 5000;
 
 // Middleware
+console.log("SERVER FILE STARTED");
+
 app.use(express.json());
 
 // Connect to MongoDB
