@@ -1,299 +1,107 @@
-# Family Spending Pattern Analysis 💰
+# 💰 Expense Tracker
 
-## 📌 About the Project
+## 📌 Project Overview
 
-**Family Spending Pattern Analysis** is a web-based expense tracking system designed to help families manage and understand their daily spending.
+Expense Tracker is a web application that helps users track and manage their daily expenses. It allows users to record income and expenses, organize transactions into categories, and monitor their spending habits. The system helps users understand where their money is being spent and supports better financial planning.
 
-Many families exceed their monthly budget because small and unnecessary expenses such as **dining, entertainment, shopping, and subscriptions** are not properly monitored.
+---
 
-This application allows users to record their expenses, set budgets, and analyze their spending patterns through a simple and user-friendly dashboard.
+## 🎯 Problem Statement
+
+Many households exceed their monthly budgets due to unmonitored discretionary spending on entertainment, dining, and subscriptions. Without proper expense tracking, it becomes difficult to identify unnecessary spending and manage finances effectively.
+
+The Expense Tracker helps users record their transactions, analyze spending patterns, and make informed financial decisions.
 
 ---
 
 ## 🎯 Objectives
 
-* Track daily family expenses
-* Categorize expenses
-* Set monthly budgets
-* Monitor spending
-* Analyze spending patterns
-* Identify unnecessary expenses
-* Detect budget overruns
-* Help families improve financial planning
+- Track daily income and expenses.
+- Categorize transactions for better organization.
+- Monitor monthly spending.
+- Identify unnecessary expenses.
+- Help users improve budgeting and savings.
 
 ---
 
 ## ✨ Features
 
-### 🔐 User Authentication
-
-* User Registration
-* User Login
-* Secure user access
-
-### 💸 Expense Management
-
-* Add expenses
-* Edit expenses
-* Delete expenses
-* View expense history
-* Categorize expenses
-
-### 💰 Budget Management
-
-* Set monthly budget
-* Set category-wise budget
-* Track remaining budget
-* Get budget warnings
-
-### 📊 Spending Analysis
-
-* Monthly spending analysis
-* Category-wise spending
-* Highest spending category
-* Spending trends
-* Budget vs actual spending
-
-### 📈 Dashboard
-
-The dashboard displays:
-
-* Total Expenses
-* Monthly Budget
-* Remaining Budget
-* Recent Transactions
-* Category-wise Expenses
-* Spending Analysis
+- ➕ Add income and expenses
+- ✏️ Edit and delete transactions
+- 📂 Categorize expenses
+- 📊 View spending analysis
+- 💰 Monthly budget tracking
+- 📅 Filter transactions by date
+- 📱 Responsive and user-friendly interface
 
 ---
 
 ## 🛠️ Technologies Used
 
 ### Frontend
-
-* React.js
-* JavaScript
-* HTML
-* CSS
-* Vite
+- HTML
+- CSS
+- JavaScript
+- React.js
 
 ### Backend
-
-* Node.js
-* Express.js
+- Node.js
+- Express.js
 
 ### Database
+- MongoDB
 
-* MySQL
+### Version Control
+- Git
+- GitHub
 
-### Tools
-
-* VS Code
-* Git
-* GitHub
-* Postman
-
----
-
-## 📂 Project Structure
-
-```text
-expense-tracker/
-│
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── vite.config.js
-│
-├── backend/
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
-│   ├── middleware/
-│   ├── server.js
-│   └── package.json
-│
-├── database/
-│   └── schema.sql
-│
-├── .gitignore
-└── README.md
-```
+### Code Editor
+- Visual Studio Code
 
 ---
 
-## ⚙️ Installation
+## 👥 Target Users
 
-### Step 1: Clone the Repository
-
-```bash
-git clone <your-repository-url>
-```
-
-### Step 2: Open the Project
-
-```bash
-cd expense-tracker
-```
-
-### Step 3: Install Frontend Dependencies
-
-```bash
-cd frontend
-npm install
-```
-
-### Step 4: Install Backend Dependencies
-
-Open a new terminal:
-
-```bash
-cd backend
-npm install
-```
-
----
-
-## 🔑 Environment Variables
-
-Create a `.env` file inside the `backend` folder.
-
-```env
-PORT=5000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=expense_tracker
-```
-
-> Do not upload the `.env` file to GitHub.
-
----
-
-## ▶️ Running the Project
-
-### Start Backend
-
-```bash
-cd backend
-npm start
-```
-
-### Start Frontend
-
-Open another terminal:
-
-```bash
-cd frontend
-npm run dev
-```
-
-Then open the local URL shown in the terminal.
-
----
-
-## 📊 Example
-
-A family has a monthly budget of **₹30,000**.
-
-| Category      |      Amount |
-| ------------- | ----------: |
-| Dining        |      ₹7,500 |
-| Shopping      |      ₹6,000 |
-| Entertainment |      ₹4,500 |
-| Subscriptions |      ₹2,500 |
-| Transport     |      ₹3,000 |
-| Household     |      ₹5,000 |
-| **Total**     | **₹28,500** |
-
-The system helps identify **Dining and Shopping** as major spending categories.
-
----
-
-## 🔄 Application Flow
-
-```text
-Register / Login
-       ↓
-   Dashboard
-       ↓
- Add Expense
-       ↓
-Select Category
-       ↓
- Save Expense
-       ↓
-Set Monthly Budget
-       ↓
-Spending Analysis
-       ↓
-View Insights
-       ↓
-Better Financial Planning
-```
-
----
-
-## 🔌 API Endpoints
-
-### Authentication
-
-```text
-POST /api/auth/register
-POST /api/auth/login
-```
-
-### Expenses
-
-```text
-GET    /api/expenses
-POST   /api/expenses
-PUT    /api/expenses/:id
-DELETE /api/expenses/:id
-```
-
-### Budget
-
-```text
-GET  /api/budget
-POST /api/budget
-```
-
-### Analytics
-
-```text
-GET /api/analytics
-```
+- Families
+- Students
+- Working Professionals
+- Anyone who wants to manage personal finances
 
 ---
 
 ## 🚀 Future Enhancements
 
-* AI-based spending prediction
-* Expense alerts
-* Monthly PDF reports
-* Mobile application
-* Family member accounts
-* Saving recommendations
-* Subscription reminders
-* Advanced spending analytics
-* Cloud deployment
+- AI-based spending suggestions
+- Savings goal tracker
+- Bill payment reminders
+- Export reports to PDF
+- Mobile application
 
 ---
 
-## 👩‍💻 Project Details
+## 📂 Project Structure
 
-**Project Name:** Family Spending Pattern Analysis
-
-**Project Type:** Full-Stack Web Application
-
-**Domain:** Expense Management & Personal Finance
-
-**Purpose:** To help families track expenses, understand spending patterns, and manage their monthly budgets effectively.
+```
+Expense-Tracker/
+│── frontend/
+│── backend/
+│── README.md
+```
 
 ---
 
-## 📜 License
+## 👩‍💻 Author
 
-This project is created for **educational purposes**.
+**Bowshika K**
+
+B.Tech Artificial Intelligence & Machine Learning
+
+---
+
+## 📄 License
+
+This project is created for educational purposes.
+
+
+
+## figma link:https://www.figma.com/design/m1t3chmnQpEwwa2zoQvVwj/Untitled?node-id=0-1&t=lvmYWlBPrCsyvyp5-1
