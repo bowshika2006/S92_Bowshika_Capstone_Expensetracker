@@ -6,6 +6,7 @@ const Expense = require("./models/Expense");
 const app = express();
 const PORT = 5000;
 
+// Middleware
 console.log("SERVER FILE STARTED");
 
 app.use(express.json());
@@ -79,6 +80,12 @@ app.get("/api/categories", async (req, res) => {
 // POST API - Add a new expense
 app.post("/api/expenses", async (req, res) => {
   try {
+    if (!req.body || Object.keys(req.body).length === 0) {
+      return res.status(400).json({
+        error: "Expense data is required"
+      });
+    }
+
     const expense = new Expense(req.body);
     const savedExpense = await expense.save();
 
