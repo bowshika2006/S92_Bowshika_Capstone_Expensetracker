@@ -3,12 +3,16 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const { OAuth2Client } = require("google-auth-library");
 
 const Expense = require("./models/Expense");
 const User = require("./models/User");
 
 const app = express();
 const PORT = 5000;
+
+// Google OAuth Client
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // Middleware
 app.use(express.json());
@@ -32,7 +36,10 @@ app.get("/", (req, res) => {
   });
 });
 
-// JWT Authentication Middleware
+// =====================================================
+// JWT AUTHENTICATION MIDDLEWARE
+// =====================================================
+
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -62,8 +69,11 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-// GET API - Get all expenses
+// =====================================================
+// GET ALL EXPENSES
 // Protected using JWT
+// =====================================================
+
 app.get("/api/expenses", authenticateToken, async (req, res) => {
   try {
     const expenses = await Expense.find();
@@ -76,7 +86,10 @@ app.get("/api/expenses", authenticateToken, async (req, res) => {
   }
 });
 
+// =====================================================
 // REGISTER
+// =====================================================
+
 app.post("/api/auth/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -99,6 +112,7 @@ app.post("/api/auth/register", async (req, res) => {
       name,
       email,
       password,
+      authProvider: "local",
     });
 
     const savedUser = await user.save();
@@ -118,7 +132,10 @@ app.post("/api/auth/register", async (req, res) => {
   }
 });
 
+// =====================================================
 // LOGIN
+// =====================================================
+
 app.post("/api/auth/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -165,7 +182,96 @@ app.post("/api/auth/login", async (req, res) => {
   }
 });
 
+// =====================================================
+// GOOGLE LOGIN
+// =====================================================
+
+app.post("/api/auth/google", async (req, res) => {
+  try {
+    const { credential } = req.body;
+
+    if (!credential) {
+      return res.status(400).json({
+        error: "Google credential is required",
+      });
+    }
+
+    // Verify Google ID token
+    const ticket = await googleClient.verifyIdToken({
+      idToken: credential,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+
+    const payload = ticket.getPayload();
+
+    const googleId = payload.sub;
+    const email = payload.email;
+    const name = payload.name;
+
+    if (!email) {
+      return res.status(400).json({
+        error: "Google account email not found",
+      });
+    }
+
+    // Check if user already exists
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      // Create new Google user
+      user = new User({
+        name: name || "Google User",
+        email,
+        googleId,
+        authProvider: "google",
+      });
+
+      await user.save();
+    } else {
+      // Link Google account with existing user
+      if (!user.googleId) {
+        user.googleId = googleId;
+      }
+
+      user.authProvider = "google";
+
+      await user.save();
+    }
+
+    // Create JWT for our application
+    const token = jwt.sign(
+      {
+        userId: user._id,
+        email: user.email,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+
+    res.status(200).json({
+      message: "Google login successful",
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+    });
+  } catch (error) {
+    console.error("Google login error:", error.message);
+
+    res.status(401).json({
+      error: "Google authentication failed",
+    });
+  }
+});
+
+// =====================================================
 // START SERVER
+// =====================================================
+
 app.listen(PORT, "127.0.0.1", () => {
   console.log(`Server running on http://127.0.0.1:${PORT}`);
   console.log("Server is listening...");
