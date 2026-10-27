@@ -14,14 +14,25 @@ const Expense = require("./models/Expense");
 const User = require("./models/User");
 
 const app = express();
-const PORT = 5000;
+const PORT = Number(process.env.PORT) || 5000;
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // MIDDLEWARE
+app.set("trust proxy", 1);
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  ...(process.env.CLIENT_URL || "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+];
+
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+    origin: allowedOrigins,
   })
 );
 
@@ -340,7 +351,7 @@ app.post("/api/auth/google", async (req, res) => {
 });
 
 // START SERVER
-app.listen(PORT, "127.0.0.1", () => {
-  console.log(`Server running on http://127.0.0.1:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server listening on port ${PORT}`);
   console.log("Server is listening...");
 });
