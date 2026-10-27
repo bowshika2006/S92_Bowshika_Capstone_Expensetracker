@@ -1,0 +1,26 @@
+meta {
+  name: Upload File
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/upload
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  file: @file(./receipt.png)
+}
+
+docs {
+  Uploads one JPG, PNG, or PDF file using the multipart field name file.
+  Maximum file size is 5 MB. Requires a valid JWT. The 201 response includes file, path, and url.
+  Put a sample file beside this collection's bruno.json or replace the path with a file on your computer.
+  The file is served from /uploads/<file>.
+}

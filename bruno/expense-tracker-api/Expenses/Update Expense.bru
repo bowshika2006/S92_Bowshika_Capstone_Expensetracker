@@ -1,0 +1,30 @@
+meta {
+  name: Update Expense
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/api/expenses/{{expenseId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "title": "Lunch (updated)",
+    "amount": 14,
+    "category": "Food",
+    "date": "2026-10-27",
+    "description": "Updated expense details"
+  }
+}
+
+docs {
+  Updates the supplied fields on an expense owned by the authenticated user.
+  Replace expenseId with an expense ID. Returns 404 if the expense is not found or is not owned by the user.
+}
