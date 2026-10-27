@@ -1,0 +1,30 @@
+meta {
+  name: Create Expense
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/expenses
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "title": "Lunch",
+    "amount": 12.5,
+    "category": "Food",
+    "date": "2026-10-27",
+    "description": "Lunch with friends"
+  }
+}
+
+docs {
+  Creates an expense for the authenticated user and returns the saved expense with status 201.
+  title, positive amount, and category are required. date and description are optional.
+}
