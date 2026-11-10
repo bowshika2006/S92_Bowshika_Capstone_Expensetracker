@@ -102,6 +102,17 @@ B.Tech Artificial Intelligence & Machine Learning
 
 This project is created for educational purposes.
 
+## 🌐 Frontend Deployment
+
+The frontend is configured for Netlify. Import this repository in Netlify and
+use the root `netlify.toml` settings to build the Vite app from `client/` and
+publish `client/dist`. Set `VITE_API_URL` to the deployed Render API origin and
+`VITE_GOOGLE_CLIENT_ID` to the Google OAuth web client ID before deploying.
+
+**Live frontend:** Add the Netlify site URL here after the first successful
+deployment.
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for the full setup and verification steps.
 
 
 ## figma link:https://www.figma.com/design/m1t3chmnQpEwwa2zoQvVwj/Untitled?node-id=0-1&t=lvmYWlBPrCsyvyp5-1

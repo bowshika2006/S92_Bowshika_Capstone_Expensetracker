@@ -1,0 +1,20 @@
+meta {
+  name: Delete Expense
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{baseUrl}}/api/expenses/{{expenseId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  Deletes the supplied expense if it belongs to the authenticated user.
+  Replace expenseId with an expense ID. Returns 404 if the expense is not found or is not owned by the user.
+}

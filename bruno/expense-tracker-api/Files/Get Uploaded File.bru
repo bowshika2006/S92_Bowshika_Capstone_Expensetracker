@@ -1,0 +1,16 @@
+meta {
+  name: Get Uploaded File
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/uploads/{{fileName}}
+  body: none
+  auth: none
+}
+
+docs {
+  Retrieves a previously uploaded file by its returned filename.
+  Replace fileName with the file value from the Upload File response.
+}
