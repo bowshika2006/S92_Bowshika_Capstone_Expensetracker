@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" fill="none">
+  <defs>
+    <linearGradient id="wallet" x1="120" y1="255" x2="412" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35B795"/>
+      <stop offset="1" stop-color="#11765F"/>
+    </linearGradient>
+    <linearGradient id="coin" x1="343" y1="100" x2="409" y2="166" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE28A"/>
+      <stop offset="1" stop-color="#F2B84B"/>
+    </linearGradient>
+    <filter id="shadow" x="48" y="46" width="424" height="337" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="background"/>
+      <feColorMatrix in="SourceAlpha" result="alpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy="12"/>
+      <feGaussianBlur stdDeviation="13"/>
+      <feComposite in2="alpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0.06 0 0 0 0 0.28 0 0 0 0 0.22 0 0 0 0.14 0"/>
+      <feBlend in2="background" result="shadow"/>
+      <feBlend in="SourceGraphic" in2="shadow" result="shape"/>
+    </filter>
+  </defs>
+
+  <circle cx="260" cy="210" r="173" fill="#E2F5ED"/>
+  <circle cx="260" cy="210" r="143" fill="#D3EFE4"/>
+
+  <g filter="url(#shadow)">
+    <rect x="83" y="73" width="354" height="277" rx="29" fill="#fff"/>
+    <rect x="112" y="102" width="130" height="12" rx="6" fill="#D7EAE2"/>
+    <rect x="112" y="124" width="82" height="8" rx="4" fill="#E9F2EE"/>
+
+    <rect x="125" y="228" width="34" height="67" rx="10" fill="#BCE9D9"/>
+    <rect x="177" y="195" width="34" height="100" rx="10" fill="#83D3B7"/>
+    <rect x="229" y="211" width="34" height="84" rx="10" fill="#59C19E"/>
+    <rect x="281" y="164" width="34" height="131" rx="10" fill="#2EAE88"/>
+
+    <path d="m134 205 66-43 50 18 70-67" stroke="#159778" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <path d="m298 112 23-5-5 23" stroke="#159778" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+  </g>
+
+  <circle cx="379" cy="133" r="39" fill="url(#coin)"/>
+  <circle cx="379" cy="133" r="28" stroke="#FFF4C7" stroke-width="3"/>
+  <path d="M371 115h17m-17 8h14c5 0 8 3 8 7s-3 7-8 7h-14m5-22v30m18 0-15-10" stroke="#9B6A16" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+
+  <rect x="108" y="245" width="304" height="119" rx="25" fill="url(#wallet)"/>
+  <path d="M108 274c0-15 12-27 27-27h277v55H135c-15 0-27-12-27-28Z" fill="#198B6F"/>
+  <rect x="308" y="270" width="116" height="53" rx="17" fill="#F7FFFB"/>
+  <circle cx="328" cy="296" r="5" fill="#159778"/>
+  <rect x="350" y="288" width="50" height="7" rx="3.5" fill="#C5E7DA"/>
+  <rect x="350" y="301" width="34" height="6" rx="3" fill="#D8EEE5"/>
+
+  <circle cx="91" cy="193" r="15" fill="#F4C968"/>
+  <circle cx="91" cy="193" r="7" fill="#FFF2C9"/>
+  <path d="M426 203h24m-12-12v24" stroke="#71C9A9" stroke-linecap="round" stroke-width="6"/>
+</svg>

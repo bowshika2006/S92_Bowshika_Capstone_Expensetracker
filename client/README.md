@@ -1,17 +1,21 @@
-# React + Vite
+# Pennywise Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The frontend requires an account to open the expense dashboard. Sign in with an
+existing account or create one from the sign-in page. Authentication uses the
+Express API in `server/`; expense entries are saved in the current browser for
+each account and are not synced to other devices.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+From this directory:
 
-## React Compiler
+```sh
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
+Start the API in `server/` and configure its required environment variables
+before signing in. During local development, Vite forwards `/api` requests to
+`http://localhost:5000`. Set `VITE_API_URL` to the API origin when the frontend
+and API are deployed separately. Open the local URL printed by Vite, then sign
+in or create an account. To create a production build, run `npm run build`.

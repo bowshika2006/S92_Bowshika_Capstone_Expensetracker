@@ -49,6 +49,11 @@ publish `client/dist`, and serve the app entry point for client-side routes.
    upload against the deployed API. The Render API's `/` health check should
    return `{"message":"Expense Tracker API is running"}`.
 
+`VITE_API_URL` is required for deployed frontend builds; without it, sign-in
+will report that the API is not configured instead of trying to contact
+localhost on each visitor's computer. For local development, leave it unset:
+Vite proxies `/api` requests to `http://localhost:5000`.
+
 `VITE_*` values are included in the public frontend bundle; do not put secrets
 in them. The Google OAuth client ID is public configuration, not a secret.
 
