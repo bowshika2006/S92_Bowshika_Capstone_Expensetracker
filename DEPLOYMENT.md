@@ -16,10 +16,11 @@ as its health check.
    `{"message":"Expense Tracker API is running"}`.
 
 The server listens on Render's `PORT`, binds to all network interfaces, and
-trusts Render's HTTPS proxy when generating uploaded-file URLs. The default
-`CLIENT_URL` allows local development. After deploying the frontend, update
-`CLIENT_URL` in the Render service environment to its exact origin (or a
-comma-separated list of origins) and redeploy.
+trusts Render's HTTPS proxy when generating uploaded-file URLs. The Blueprint
+sets `CLIENT_URL` to the current Netlify production origin. If you change the
+frontend domain, update `CLIENT_URL` in the Render service environment to its
+exact origin (or a comma-separated list of origins) and redeploy. Local
+development remains allowed by the server configuration.
 
 The free web service's local disk is ephemeral. Uploaded receipts stored in
 `server/uploads` may be lost when the service restarts or redeploys. Use
