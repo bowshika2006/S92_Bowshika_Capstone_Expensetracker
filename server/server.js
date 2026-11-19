@@ -25,6 +25,7 @@ app.set("trust proxy", 1);
 const allowedOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
+  "https://storied-kelpie-0a5ab9.netlify.app",
   ...(process.env.CLIENT_URL || "")
     .split(",")
     .map((origin) => origin.trim())
